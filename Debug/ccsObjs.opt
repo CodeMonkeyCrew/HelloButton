@@ -1,0 +1,1 @@
+"./boot.obj" "./intvecs.obj" "./irq_isr.obj" "./main.obj" "../OMAP3530.cmd" -llibc.a 
