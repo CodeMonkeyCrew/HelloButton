@@ -1,1 +1,1 @@
-"./boot.obj" "./intvecs.obj" "./irq_isr.obj" "./main.obj" "../OMAP3530.cmd" -llibc.a 
+"./boot.obj" "./intvecs.obj" "./isr_abort.obj" "./isr_fiq.obj" "./isr_irq.obj" "./isr_prefetch.obj" "./isr_swi.obj" "./isr_undef.obj" "./isr_unused.obj" "./main.obj" "../OMAP3530.cmd" -llibc.a 

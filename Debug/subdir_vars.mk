@@ -11,7 +11,13 @@ CMD_SRCS += \
 ASM_SRCS += \
 ../boot.asm \
 ../intvecs.asm \
-../irq_isr.asm 
+../isr_abort.asm \
+../isr_fiq.asm \
+../isr_irq.asm \
+../isr_prefetch.asm \
+../isr_swi.asm \
+../isr_undef.asm \
+../isr_unused.asm 
 
 C_SRCS += \
 ../main.c 
@@ -22,18 +28,36 @@ C_DEPS += \
 OBJS += \
 ./boot.obj \
 ./intvecs.obj \
-./irq_isr.obj \
+./isr_abort.obj \
+./isr_fiq.obj \
+./isr_irq.obj \
+./isr_prefetch.obj \
+./isr_swi.obj \
+./isr_undef.obj \
+./isr_unused.obj \
 ./main.obj 
 
 ASM_DEPS += \
 ./boot.d \
 ./intvecs.d \
-./irq_isr.d 
+./isr_abort.d \
+./isr_fiq.d \
+./isr_irq.d \
+./isr_prefetch.d \
+./isr_swi.d \
+./isr_undef.d \
+./isr_unused.d 
 
 OBJS__QUOTED += \
 "boot.obj" \
 "intvecs.obj" \
-"irq_isr.obj" \
+"isr_abort.obj" \
+"isr_fiq.obj" \
+"isr_irq.obj" \
+"isr_prefetch.obj" \
+"isr_swi.obj" \
+"isr_undef.obj" \
+"isr_unused.obj" \
 "main.obj" 
 
 C_DEPS__QUOTED += \
@@ -42,12 +66,24 @@ C_DEPS__QUOTED += \
 ASM_DEPS__QUOTED += \
 "boot.d" \
 "intvecs.d" \
-"irq_isr.d" 
+"isr_abort.d" \
+"isr_fiq.d" \
+"isr_irq.d" \
+"isr_prefetch.d" \
+"isr_swi.d" \
+"isr_undef.d" \
+"isr_unused.d" 
 
 ASM_SRCS__QUOTED += \
 "../boot.asm" \
 "../intvecs.asm" \
-"../irq_isr.asm" 
+"../isr_abort.asm" \
+"../isr_fiq.asm" \
+"../isr_irq.asm" \
+"../isr_prefetch.asm" \
+"../isr_swi.asm" \
+"../isr_undef.asm" \
+"../isr_unused.asm" 
 
 C_SRCS__QUOTED += \
 "../main.c" 

@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 long * INTCPS_CONTROL = (long*) 0x48200048;
 // register to unmask interrupt lines
 long * INTCPS_MIR0 = (long*) 0x48200084;
@@ -24,14 +22,6 @@ long * GPIO1_DATAIN = (long*) 0x48310038;
 
 long BTN = (1 << 4);
 
-__interrupt void c_intIRQ() {
-    // clear interrupt flag
-    *INTCPS_CONTROL |= (1 << 0);
-    //*GPIO1_IRQENABLE1 &= ~BTN;
-    //printf("hello interrupt!\n");
-    //__asm(" SUBS PC, LR, #4");
-}
-
 void main(void) {
     // unmask interrupt line 29 (GPIO 1)
     *INTCPS_MIR0 &= ~(1 << 29);
@@ -46,8 +36,11 @@ void main(void) {
     *CONTROL_PADCONF_SYS_BOOT2 &= ~(1 << 17);
     *CONTROL_PADCONF_SYS_BOOT2 |= (1 << 18);
 
+    *CONTROL_PADCONF_SYS_BOOT2 |= (1 << 19);
+    *CONTROL_PADCONF_SYS_BOOT2 &= ~(1 << 20);
+
     // clear interrupt flag
-    // *GPIO1_IRQSTATUS1 |= BTN;
+    *GPIO1_IRQSTATUS1 |= BTN;
     *GPIO1_RISINGDETECT |= BTN;
     *GPIO1_IRQENABLE1 |= BTN;
 
@@ -58,9 +51,7 @@ void main(void) {
 
     while(1) {
         if(*GPIO1_DATAIN & BTN) {
-            printf("Button pressed\n");
         } else {
-            printf("Button NOT pressed\n");
         }
     }
 }

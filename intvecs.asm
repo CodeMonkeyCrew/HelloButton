@@ -1,19 +1,17 @@
-	    ; .if __TI_EABI_ASSEMBLER
-	    ; .asg c_intIRQ, C_INTIRQ
-	    ; .else
-	    ; .asg _c_intIRQ, C_INTIRQ
-	    ; .endif
+	.global _ISR_UNDEF
+	.global _ISR_SWI
+	.global _ISR_PREFETCH
+	.global _ISR_ABORT
+	.global _ISR_UNUSED
+	.global _ISR_IRQ
+	.global _ISR_FIQ
 
-	.global _c_int00
-	.global _IRQ_ISR
-
+	.retain ".intvecs"
 	.sect ".intvecs"
-
-	B _c_int00 ; reset
-	.word 0 ; undefined
-	.word 0 ; SWI
-	.word 0 ; prefetch abort
-	.word 0 ; data abort
-	.word 0 ; unused
-	B _IRQ_ISR ; IRQ
-	.word 0 ; FIQ
+	B _ISR_UNDEF
+	B _ISR_SWI
+	B _ISR_PREFETCH
+	B _ISR_ABORT
+	B _ISR_UNUSED
+	B _ISR_IRQ
+	B _ISR_FIQ

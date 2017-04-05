@@ -12,7 +12,13 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./boot.obj" \
 "./intvecs.obj" \
-"./irq_isr.obj" \
+"./isr_abort.obj" \
+"./isr_fiq.obj" \
+"./isr_irq.obj" \
+"./isr_prefetch.obj" \
+"./isr_swi.obj" \
+"./isr_undef.obj" \
+"./isr_unused.obj" \
 "./main.obj" \
 "../OMAP3530.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -156,9 +162,9 @@ HelloButton.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "boot.obj" "intvecs.obj" "irq_isr.obj" "main.obj" 
+	-$(RM) "boot.obj" "intvecs.obj" "isr_abort.obj" "isr_fiq.obj" "isr_irq.obj" "isr_prefetch.obj" "isr_swi.obj" "isr_undef.obj" "isr_unused.obj" "main.obj" 
 	-$(RM) "main.d" 
-	-$(RM) "boot.d" "intvecs.d" "irq_isr.d" 
+	-$(RM) "boot.d" "intvecs.d" "isr_abort.d" "isr_fiq.d" "isr_irq.d" "isr_prefetch.d" "isr_swi.d" "isr_undef.d" "isr_unused.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

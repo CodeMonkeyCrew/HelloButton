@@ -44,17 +44,17 @@ SECTIONS
 
 	.intvecs       >  INTVECS
     .text          >  SRAM
-    .stack         >  SRAM
-    .bss           >  SRAM
-    .cio           >  SRAM
-    .const         >  SRAM
-    .data          >  SRAM
-    .switch        >  SRAM
-    .sysmem        >  SRAM
-    .far           >  SRAM
-    .args          >  SRAM
-    .ppinfo        >  SRAM
-    .ppdata        >  SRAM
+    .stack         >  DDR0
+    .bss           >  DDR0
+    .cio           >  DDR0
+    .const         >  DDR0
+    .data          >  DDR0
+    .switch        >  DDR0
+    .sysmem        >  DDR0
+    .far           >  DDR0
+    .args          >  DDR0
+    .ppinfo        >  DDR0
+    .ppdata        >  DDR0
   
     /* TI-ABI or COFF sections */
     .pinit         >  SRAM
