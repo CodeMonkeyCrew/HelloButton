@@ -1,3 +1,5 @@
+#include "mos_sys_lib.h"
+
 long * INTCPS_CONTROL = (long*) 0x48200048;
 // register to unmask interrupt lines
 long * INTCPS_MIR0 = (long*) 0x48200084;
@@ -21,6 +23,10 @@ long * GPIO1_OE = (long*) 0x48310034;
 long * GPIO1_DATAIN = (long*) 0x48310038;
 
 long BTN = (1 << 4);
+
+int putISR(int value) {
+    return 4711;
+}
 
 void main(void) {
     // unmask interrupt line 29 (GPIO 1)
@@ -50,6 +56,7 @@ void main(void) {
     _enable_interrupts();
 
     while(1) {
+        int res = put(10);
         if(*GPIO1_DATAIN & BTN) {
         } else {
         }

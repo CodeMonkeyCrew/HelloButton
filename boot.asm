@@ -294,15 +294,39 @@ _c_int00: .asmfunc stack_usage(0)
         ADD		sp, sp, r0
 
         ;*------------------------------------------------------
-        ;* SET TO PRIV MODE
+        ;* SET TO SUPERVISOR MODE
         ;*------------------------------------------------------
         MRS     r0, cpsr
         BIC     r0, r0, #0x1F  ; CLEAR MODES
-        ORR     r0, r0, #0x1F  ; SET PRIV MODE
+        ORR     r0, r0, #0x13  ; SET SUPERVISOR MODE
         MSR     cpsr_cf, r0
 
         ;*------------------------------------------------------
-        ;* INITIALIZE THE PRIV MODE STACK
+        ;* INITIALIZE THE SUPERVISOR MODE STACK
+        ;*------------------------------------------------------
+        .if __TI_AVOID_EMBEDDED_CONSTANTS
+        MOVW	sp, __stack
+        MOVT	sp, __stack
+        MOVW    r0, __STACK_SIZE
+        MOVT    r0, __STACK_SIZE
+        .else
+        LDR     sp, c_stack
+        LDR     r0, c_STACK_SIZE
+        .endif
+        ADD     sp, sp, r0
+        ADD     sp, sp, #0x04
+        ADD		sp, sp, r0
+
+        ;*------------------------------------------------------
+        ;* SET TO SYSTEM MODE
+        ;*------------------------------------------------------
+        MRS     r0, cpsr
+        BIC     r0, r0, #0x1F  ; CLEAR MODES
+        ORR     r0, r0, #0x1F  ; SET SYSTEM MODE
+        MSR     cpsr_cf, r0
+
+        ;*------------------------------------------------------
+        ;* INITIALIZE THE SYSTEM MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
         MOVW    sp, __stack
@@ -314,6 +338,8 @@ _c_int00: .asmfunc stack_usage(0)
         LDR     r0, c_STACK_SIZE
         .endif
         ADD     sp, sp, r0
+        ADD     sp, sp, #0x04
+        ADD		sp, sp, r0
         ADD     sp, sp, #0x04
         ADD		sp, sp, r0
 
