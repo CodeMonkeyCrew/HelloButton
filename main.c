@@ -1,5 +1,3 @@
-#include "mos_sys_lib.h"
-
 long * INTCPS_CONTROL = (long*) 0x48200048;
 // register to unmask interrupt lines
 long * INTCPS_MIR0 = (long*) 0x48200084;
@@ -23,6 +21,9 @@ long * GPIO1_OE = (long*) 0x48310034;
 long * GPIO1_DATAIN = (long*) 0x48310038;
 
 long BTN = (1 << 4);
+
+#pragma SWI_ALIAS(put, 0);
+int put(int value);
 
 int putISR(int value) {
     return 4711;

@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v16.9.1                     
 ******************************************************************************
->> Linked Thu Apr 06 16:51:03 2017
+>> Linked Thu Apr 06 22:00:53 2017
 
 OUTPUT FILE NAME:   <HelloButton.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 4020061c
+ENTRY POINT SYMBOL: "_c_int00"  address: 40200614
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  SRAM                  40200000   0000ffc8  000009d4  0000f5f4  RWIX
+  SRAM                  40200000   0000ffc8  000009cc  0000f5fc  RWIX
   INTVECS               4020ffc8   00000038  0000001c  0000001c  RWIX
   IVASHL2RAM            5c7f8000   00008000  00000000  00008000  RWIX
   IVASHL2RAM_C          5c800000   00010000  00000000  00010000  RWIX
@@ -26,9 +26,9 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-40200000    40200000    000009d8   000009d8    r-x
-  40200000    40200000    0000098c   0000098c    r-x .text
-  40200990    40200990    00000048   00000048    r-- .cinit
+40200000    40200000    000009d0   000009d0    r-x
+  40200000    40200000    00000984   00000984    r-x .text
+  40200988    40200988    00000048   00000048    r-- .cinit
 4020ffc8    4020ffc8    0000001c   0000001c    r-x
   4020ffc8    4020ffc8    0000001c   0000001c    r-x .intvecs
 80000000    80000000    00000844   00000000    rw-
@@ -41,27 +41,27 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.text      0    40200000    0000098c     
+.text      0    40200000    00000984     
                   40200000    000001e4     isr_irq.obj (.text)
                   402001e4    00000180     main.obj (.text)
                   40200364    00000180     rtsv7A8_A_le_eabi.lib : memcpy32.obj (.text)
-                  402004e4    00000138     isr_swi.obj (.text)
-                  4020061c    000000a8     boot.obj (.text)
-                  402006c4    000000a8     rtsv7A8_A_le_eabi.lib : autoinit.obj (.text)
-                  4020076c    00000090                           : copy_decompress_lzss.obj (.text:decompress:lzss)
-                  402007fc    00000090                           : exit.obj (.text)
-                  4020088c    00000084                           : cpy_tbl.obj (.text)
-                  40200910    00000024                           : _lock.obj (.text)
-                  40200934    00000020                           : args_main.obj (.text)
-                  40200954    00000014                           : copy_decompress_none.obj (.text:decompress:none)
-                  40200968    00000008                           : pre_init.obj (.text)
-                  40200970    00000004     isr_abort.obj (.text)
-                  40200974    00000004     isr_fiq.obj (.text)
-                  40200978    00000004     isr_prefetch.obj (.text)
-                  4020097c    00000004     isr_undef.obj (.text)
-                  40200980    00000004     isr_unused.obj (.text)
-                  40200984    00000004     rtsv7A8_A_le_eabi.lib : mpu_init.obj (.text)
-                  40200988    00000004                           : startup.obj (.text)
+                  402004e4    00000130     isr_swi.obj (.text)
+                  40200614    000000a8     boot.obj (.text)
+                  402006bc    000000a8     rtsv7A8_A_le_eabi.lib : autoinit.obj (.text)
+                  40200764    00000090                           : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  402007f4    00000090                           : exit.obj (.text)
+                  40200884    00000084                           : cpy_tbl.obj (.text)
+                  40200908    00000024                           : _lock.obj (.text)
+                  4020092c    00000020                           : args_main.obj (.text)
+                  4020094c    00000014                           : copy_decompress_none.obj (.text:decompress:none)
+                  40200960    00000008                           : pre_init.obj (.text)
+                  40200968    00000004     isr_abort.obj (.text)
+                  4020096c    00000004     isr_fiq.obj (.text)
+                  40200970    00000004     isr_prefetch.obj (.text)
+                  40200974    00000004     isr_undef.obj (.text)
+                  40200978    00000004     isr_unused.obj (.text)
+                  4020097c    00000004     rtsv7A8_A_le_eabi.lib : mpu_init.obj (.text)
+                  40200980    00000004                           : startup.obj (.text)
 
 .intvecs   0    4020ffc8    0000001c     
                   4020ffc8    0000001c     intvecs.obj (.intvecs)
@@ -75,10 +75,10 @@ section   page    origin      length       input sections
                   80000838    00000008                           : _lock.obj (.data:$O1$$)
                   80000840    00000004                           : stkdepth_vars.obj (.data)
 
-.cinit     0    40200990    00000048     
-                  40200990    00000038     (.cinit..data.load) [load image, compression = lzss]
-                  402009c8    00000008     (__TI_handler_table)
-                  402009d0    00000008     (__TI_cinit_table)
+.cinit     0    40200988    00000048     
+                  40200988    00000038     (.cinit..data.load) [load image, compression = lzss]
+                  402009c0    00000008     (__TI_handler_table)
+                  402009c8    00000008     (__TI_cinit_table)
 
 .init_array 
 *          0    40200000    00000000     UNINITIALIZED
@@ -90,7 +90,7 @@ MODULE SUMMARY
     .\
        isr_irq.obj                484    0         0      
        main.obj                   384    0         44     
-       isr_swi.obj                312    0         0      
+       isr_swi.obj                304    0         0      
        boot.obj                   168    0         0      
        intvecs.obj                28     0         0      
        isr_abort.obj              4      0         0      
@@ -99,7 +99,7 @@ MODULE SUMMARY
        isr_undef.obj              4      0         0      
        isr_unused.obj             4      0         0      
     +--+--------------------------+------+---------+---------+
-       Total:                     1396   0         44     
+       Total:                     1388   0         44     
                                                           
     C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.1.LTS\lib\rtsv7A8_A_le_eabi.lib
        memcpy32.obj               384    0         0      
@@ -120,18 +120,18 @@ MODULE SUMMARY
        Stack:                     0      0         2048   
        Linker Generated:          0      72        0      
     +--+--------------------------+------+---------+---------+
-       Grand Total:               2472   72        2116   
+       Grand Total:               2464   72        2116   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 402009d0 records: 1, size/record: 8, table size: 8
-	.data: load addr=40200990, load size=00000038 bytes, run addr=80000800, run size=00000044 bytes, compression=lzss
+__TI_cinit_table @ 402009c8 records: 1, size/record: 8, table size: 8
+	.data: load addr=40200988, load size=00000038 bytes, run addr=80000800, run size=00000044 bytes, compression=lzss
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 402009c8 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 402009c0 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 
@@ -141,7 +141,7 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 address   name                           
 -------   ----                           
 80000828  BTN                            
-402007fc  C$$EXIT                        
+402007f4  C$$EXIT                        
 80000810  CM_FCLKEN_WKUP                 
 8000080c  CM_ICLKEN_WKUP                 
 80000814  CONTROL_PADCONF_SYS_BOOT2      
@@ -154,49 +154,49 @@ address   name
 80000804  INTCPS_MIR0                    
 UNDEFED   SHT$$INIT_ARRAY$$Base          
 UNDEFED   SHT$$INIT_ARRAY$$Limit         
-40200970  _ISR_ABORT                     
-40200974  _ISR_FIQ                       
+40200968  _ISR_ABORT                     
+4020096c  _ISR_FIQ                       
 40200004  _ISR_IRQ                       
-40200978  _ISR_PREFETCH                  
+40200970  _ISR_PREFETCH                  
 402004e4  _ISR_SWI                       
-4020097c  _ISR_UNDEF                     
-40200980  _ISR_UNUSED                    
+40200974  _ISR_UNDEF                     
+40200978  _ISR_UNUSED                    
 80000800  __STACK_END                    
 00000800  __STACK_SIZE                   
-402009d0  __TI_CINIT_Base                
-402009d8  __TI_CINIT_Limit               
-402009c8  __TI_Handler_Table_Base        
-402009d0  __TI_Handler_Table_Limit       
-402006c4  __TI_auto_init                 
+402009c8  __TI_CINIT_Base                
+402009d0  __TI_CINIT_Limit               
+402009c0  __TI_Handler_Table_Base        
+402009c8  __TI_Handler_Table_Limit       
+402006bc  __TI_auto_init                 
 8000082c  __TI_cleanup_ptr               
-4020076c  __TI_decompress_lzss           
-40200954  __TI_decompress_none           
+40200764  __TI_decompress_lzss           
+4020094c  __TI_decompress_none           
 80000830  __TI_dtors_ptr                 
 80000834  __TI_enable_exit_profile_output
 ffffffff  __TI_pprof_out_hndl            
 ffffffff  __TI_prof_data_size            
 ffffffff  __TI_prof_data_start           
-40200990  __TI_static_base__             
+40200988  __TI_static_base__             
 40200364  __aeabi_memcpy                 
 40200364  __aeabi_memcpy4                
 40200364  __aeabi_memcpy8                
 ffffffff  __binit__                      
 ffffffff  __c_args__                     
-40200984  __mpu_init                     
+4020097c  __mpu_init                     
 80000000  __stack                        
-40200934  _args_main                     
-4020061c  _c_int00                       
+4020092c  _args_main                     
+40200614  _c_int00                       
 80000838  _lock                          
-40200928  _nop                           
-4020091c  _register_lock                 
-40200910  _register_unlock               
-40200988  _system_post_cinit             
-40200968  _system_pre_init               
+40200920  _nop                           
+40200914  _register_lock                 
+40200908  _register_unlock               
+40200980  _system_post_cinit             
+40200960  _system_pre_init               
 8000083c  _unlock                        
-40200804  abort                          
+402007fc  abort                          
 ffffffff  binit                          
-4020088c  copy_in                        
-40200810  exit                           
+40200884  copy_in                        
+40200808  exit                           
 402001f8  main                           
 80000840  main_func_sp                   
 40200364  memcpy                         
@@ -216,31 +216,31 @@ address   name
 40200364  __aeabi_memcpy8                
 40200364  memcpy                         
 402004e4  _ISR_SWI                       
-4020061c  _c_int00                       
-402006c4  __TI_auto_init                 
-4020076c  __TI_decompress_lzss           
-402007fc  C$$EXIT                        
-40200804  abort                          
-40200810  exit                           
-4020088c  copy_in                        
-40200910  _register_unlock               
-4020091c  _register_lock                 
-40200928  _nop                           
-40200934  _args_main                     
-40200954  __TI_decompress_none           
-40200968  _system_pre_init               
-40200970  _ISR_ABORT                     
-40200974  _ISR_FIQ                       
-40200978  _ISR_PREFETCH                  
-4020097c  _ISR_UNDEF                     
-40200980  _ISR_UNUSED                    
-40200984  __mpu_init                     
-40200988  _system_post_cinit             
-40200990  __TI_static_base__             
-402009c8  __TI_Handler_Table_Base        
-402009d0  __TI_CINIT_Base                
-402009d0  __TI_Handler_Table_Limit       
-402009d8  __TI_CINIT_Limit               
+40200614  _c_int00                       
+402006bc  __TI_auto_init                 
+40200764  __TI_decompress_lzss           
+402007f4  C$$EXIT                        
+402007fc  abort                          
+40200808  exit                           
+40200884  copy_in                        
+40200908  _register_unlock               
+40200914  _register_lock                 
+40200920  _nop                           
+4020092c  _args_main                     
+4020094c  __TI_decompress_none           
+40200960  _system_pre_init               
+40200968  _ISR_ABORT                     
+4020096c  _ISR_FIQ                       
+40200970  _ISR_PREFETCH                  
+40200974  _ISR_UNDEF                     
+40200978  _ISR_UNUSED                    
+4020097c  __mpu_init                     
+40200980  _system_post_cinit             
+40200988  __TI_static_base__             
+402009c0  __TI_Handler_Table_Base        
+402009c8  __TI_CINIT_Base                
+402009c8  __TI_Handler_Table_Limit       
+402009d0  __TI_CINIT_Limit               
 80000000  __stack                        
 80000800  INTCPS_CONTROL                 
 80000800  __STACK_END                    

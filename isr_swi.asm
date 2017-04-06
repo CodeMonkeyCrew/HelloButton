@@ -20,12 +20,14 @@ _ISR_SWI:
 	LDR R10, [R10] 						; Get the value of the previous SWI instruction
 	AND R10, R10, #ACTIVESWI_MASK		; Apply the mask to get the active SWI number
 
+	ADR LR, ISR_SWI_end					; Set LR to return to ISR_SWI_end after subroutine handler
+
     ; Jump to relevant subroutine handler
     LDR PC, [PC, R10, lsl #2]			; PC base address points this instruction + 8
     NOP                             	; To index the table by the PC
 
 	; Table of handler start addresses
-	.word SWI0Handler					; for SWI0
+	.word C_PUT_ISR						; for SWI0
 	.word SWIDefaultHandler				; for SWI1
 	.word SWIDefaultHandler				; for SWI2
 	.word SWIDefaultHandler				; for SWI3
@@ -46,7 +48,7 @@ _ISR_SWI:
 	.word SWIDefaultHandler				; for SWI18
 	.word SWIDefaultHandler				; for SWI19
 	.word SWIDefaultHandler				; for SWI20
-	.word SWI21Handler					; for SWI21
+	.word SWIDefaultHandler				; for SWI21
 	.word SWIDefaultHandler				; for SWI22
 	.word SWIDefaultHandler				; for SWI23
 	.word SWIDefaultHandler				; for SWI24
@@ -92,16 +94,6 @@ _ISR_SWI:
 
 SWIDefaultHandler:
 	B SWIDefaultHandler
-
-SWI0Handler:
-	BL putISR
-    ; Jump to the end part of the ISR
-	B ISR_SWI_end
-
-; open(path, how)
-SWI21Handler:
-	; Jump to the end part of the ISR
-	B ISR_SWI_end
 
 ISR_SWI_end:
     ; restore critical context
